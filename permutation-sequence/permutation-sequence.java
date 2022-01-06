@@ -1,4 +1,4 @@
-----------------------------------------------------//Technique-1 ---> Very High time complexity O(n!*n) Brute Force-----------------------------------------------------------
+//----------------------------------------------------Technique-1 ---> Very High time complexity O(n!*n) Brute Force-----------------------------------------------------------
 class Solution {
     String ans = "";
     int res = 1;
