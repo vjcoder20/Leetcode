@@ -14,6 +14,8 @@ class Solution {
         }
        return dp[0];
     }
+    
+    //Recursive Solution
     public long fun(int[][] questions,int idx,long[] dp){
         if(idx==questions.length-1){
             return questions[idx][0];
