@@ -3,7 +3,16 @@ class Solution {
         int m = arr.length;
         int n = arr[0].length;
         int[][] dp  = new int[m][n];
-        return fun(arr,m-1,n-1,dp);
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(i==0 && j==0){
+                    dp[i][j] = arr[i][j];
+                }else{
+                    dp[i][j] = arr[i][j] + Math.min((i>0?dp[i-1][j]:Integer.MAX_VALUE),(j>0?dp[i][j-1]:Integer.MAX_VALUE));
+                }
+            }
+        }
+        return dp[m-1][n-1];
     }
     
     public int fun(int[][] arr,int i,int j,int[][] dp){
