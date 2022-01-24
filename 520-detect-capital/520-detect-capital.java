@@ -1,5 +1,6 @@
 class Solution {
     public boolean detectCapitalUse(String word) {
+        /* NOOB CODE
         if(word.length()==1){
             return true;
         }
@@ -29,5 +30,13 @@ class Solution {
             }
         return true;
     }
-
+*/
+        //Smart Code
+        if(word.length()<2){
+            return true;
+        }
+        if(word.toUpperCase().equals(word)) return true;
+        if(word.substring(1).toLowerCase().equals(word.substring(1))) return true;
+        return false;
+    }  
 }
