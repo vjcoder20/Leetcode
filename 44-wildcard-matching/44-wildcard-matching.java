@@ -1,5 +1,26 @@
 class Solution {
+    	public boolean solution(String str, String pattern,int i,int j) {
+	    
+	    if(i==pattern.length())
+	    return j==str.length();
+	    
+	    if(j==str.length())
+	    return (pattern.charAt(i)=='*' && solution(str,pattern,i+1,j));
+	    
+	     if(pattern.charAt(i) == '*') 
+	     return solution(str,pattern,i+1,j) || solution(str,pattern,i,j+1);
+	     
+	     else if(j<str.length() && (pattern.charAt(i) == str.charAt(j) || pattern.charAt(i) == '?'))
+            return solution(str,pattern,i+1,j+1);
+            
+        return false;
+	}
+    
     public boolean isMatch(String str, String pattern) {
+        //Recursive
+        // return solution(str,pattern,0,0);
+        
+        // Tabulation
         boolean[][] dp = new boolean[pattern.length()+1][str.length()+1];
         
         for(int i=0;i<dp.length;i++){
@@ -37,5 +58,6 @@ class Solution {
         }
         
         return dp[dp.length-1][dp[0].length-1];
+        
     }
 }
