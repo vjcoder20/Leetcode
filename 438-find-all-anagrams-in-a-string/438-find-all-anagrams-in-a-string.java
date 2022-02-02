@@ -1,41 +1,50 @@
-public class Solution {
-    public List<Integer> findAnagrams(String s, String t) {
-        List<Integer> result = new LinkedList<>();
-        if(t.length()> s.length()) return result;
-        Map<Character, Integer> map = new HashMap<>();
-        for(char c : t.toCharArray()){
-            map.put(c, map.getOrDefault(c, 0) + 1);
+class Solution {
+    public List<Integer> findAnagrams(String str, String pattern) {
+        
+        List<Integer> li = new ArrayList<>();
+        int s = str.length();
+        int p = pattern.length();
+        if(p>s) return li;
+        
+        
+        HashMap<Character,Integer> smap = new HashMap<>();
+        HashMap<Character,Integer> pmap = new HashMap<>();
+        
+        for(int i=0;i<p;i++){
+            char ch = str.charAt(i);
+            char ph = pattern.charAt(i);
+            smap.put(ch,smap.getOrDefault(ch,0)+1);
+            pmap.put(ph,pmap.getOrDefault(ph,0)+1);
         }
-        int counter = map.size();
         
-        int begin = 0, end = 0;
-        int head = 0;
-        int len = Integer.MAX_VALUE;
-        
-        
-        while(end < s.length()){
-            char c = s.charAt(end);
-            if( map.containsKey(c) ){
-                map.put(c, map.get(c)-1);
-                if(map.get(c) == 0) counter--;
-            }
-            end++;
+        int i = p;
+
+        while(i<s){
             
-            while(counter == 0){
-                char tempc = s.charAt(begin);
-                if(map.containsKey(tempc)){
-                    map.put(tempc, map.get(tempc) + 1);
-                    if(map.get(tempc) > 0){
-                        counter++;
-                    }
-                }
-                if(end-begin == t.length()){
-                    result.add(begin);
-                }
-                begin++;
+            if(smap.equals(pmap)){
+                li.add(i-p);
             }
             
+            char ch = str.charAt(i);
+            smap.put(ch,smap.getOrDefault(ch,0)+1);
+            
+            char chr = str.charAt(i-p);
+            if(smap.get(chr)==1){
+                smap.remove(chr);
+            }
+            else{
+               smap.put(chr,smap.get(chr)-1); 
+            }
+            
+            i++;
         }
-        return result;
+        System.out.println(smap);
+         if(smap.equals(pmap)){
+                li.add(i-p);
+            }
+        
+        
+       
+        return li;
     }
 }
