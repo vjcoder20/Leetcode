@@ -25,3 +25,7 @@ class MyHashSet {
         return hash[key];
     }
 }
+/*
+public static void arraycopy(Object src, int srcPos, Object dest, 
+                             int destPos, int length)
+*/
