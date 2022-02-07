@@ -19,14 +19,13 @@ class Solution {
         		if (reach == arr[arr.length - 1]) {
         			return true;
         		}
-    HashSet<Integer> set = map.get(reach);
-        		if (set != null) {
-        		    set.add(step);
-        		    if (step - 1 > 0) set.add(step - 1);
-        		    set.add(step + 1);
-        		}
-    }
-    
+    if(map.containsKey(reach)){
+        	    if(step-1>=0)
+        	    map.get(reach).add(step-1);
+        	    map.get(reach).add(step);
+        	     map.get(reach).add(step+1);
+        	}
+            }
 
   }
   return false;
