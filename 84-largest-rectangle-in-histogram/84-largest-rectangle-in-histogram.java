@@ -19,6 +19,7 @@ class Solution {
     }
    return max;
    */
+        //2nd Method
     int[] nsl = new int[n];
     int[] nsr = new int[n];
     Stack<Integer> st = new Stack<>();
