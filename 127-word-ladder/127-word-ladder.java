@@ -3,7 +3,7 @@ class Solution {
         Set<String> set = new HashSet<>(wordList);
         if(!set.contains(endWord)) return 0;
         
-        Queue<String> queue = new LinkedList<>();
+        Queue<String> queue = new ArrayDeque<>();
         queue.add(beginWord);
         
         Set<String> visited = new HashSet<>();
@@ -11,10 +11,10 @@ class Solution {
         
         int changes = 1;
         
-        while(!queue.isEmpty()){
+        while(queue.size()>0){
             int size = queue.size();
             for(int i = 0; i < size; i++){
-                String word = queue.poll();
+                String word = queue.remove();
                 if(word.equals(endWord)) return changes;
                 
                 for(int j = 0; j < word.length(); j++){
