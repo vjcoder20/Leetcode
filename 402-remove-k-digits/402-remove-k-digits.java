@@ -23,14 +23,14 @@ class Solution {
         while(st.size()>0){
             sb.append(st.pop());
         }
-        sb = sb.reverse();
-        int idx = 0;
-        while(idx<sb.length() && sb.charAt(idx)=='0'){
-            sb.deleteCharAt(idx);
+        sb.reverse();
+        
+        // ye sab procedure to remove leading zeros....
+        while(sb.length()>1 && sb.charAt(0)=='0'){
+            sb.deleteCharAt(0);
         }
-        if(sb.length()>0)
+    
         return sb.toString();
-        else
-        return "0";
+
     }
 }
