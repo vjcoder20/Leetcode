@@ -22,3 +22,4 @@ class Solution {
         return ans;
     }
 }
+//Hint: This is nothing but next greater on right index version not value version
