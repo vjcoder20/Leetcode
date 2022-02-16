@@ -8,7 +8,8 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+/*-------------Iterative----------------------
+class Solution {  
     public ListNode swapPairs(ListNode head) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
@@ -25,5 +26,17 @@ class Solution {
             prev = curr;
         }
         return dummy.next;
+    }
+}
+*/
+//---------------Recursive----------------
+public class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if ((head == null)||(head.next == null))
+            return head;
+        ListNode n = head.next;
+        head.next = swapPairs(head.next.next);
+        n.next = head;
+        return n;
     }
 }
