@@ -15,7 +15,7 @@ class Solution {
                 return (int)mid;
  
           
-            if (mid*mid < x)
+            else if (mid*mid < x)
             {
                 start = mid + 1;
                 ans = mid;
