@@ -6,7 +6,7 @@ class Solution {
             int fc = points[i][0];
             int sc = points[i][1];
             if(fc==x || sc==y){
-                int diff = Math.abs(fc-x)+Math.abs(sc-y);
+                int diff = Math.abs(fc-x+sc-y);
                 if(diff<abs){
                     abs = diff;
                     ans = i;
