@@ -54,4 +54,5 @@ class Solution {
 }
 }
 
-//It is just a slight inversion find index of minimum element
+//It is just a slight inversion of find index of minimum element in sorted rotated array...
+
