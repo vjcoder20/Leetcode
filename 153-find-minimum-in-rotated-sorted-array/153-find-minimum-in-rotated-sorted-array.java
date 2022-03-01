@@ -7,8 +7,10 @@ class Solution {
 	  while(start<=end){
 	      int mid = start+(end-start)/2;
 	      
-	      int prev = (mid+n-1)%n;
+        int prev = (mid+n-1)%n;   
+//nice technique to find index of previous element without worry of edge cases 
 	      int next = (mid+1)%n;
+//nice technique to find index of next element without worry of edge cases 
 	      
 	      if(arr[mid]<arr[prev] && arr[mid]<arr[next])
 	      return arr[mid];
