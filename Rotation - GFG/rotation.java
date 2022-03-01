@@ -32,8 +32,6 @@ class Solution {
     int findKRotation(int arr[], int n) {
         int start = 0;
 	  int end = n-1;
-	  if(arr[start]<arr[end])
-	  return 0;
 	  int ans = 0;
 	  while(start<=end){
 	      int mid = start+(end-start)/2;
