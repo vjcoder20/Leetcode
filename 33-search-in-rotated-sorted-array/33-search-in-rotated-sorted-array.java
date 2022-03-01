@@ -53,3 +53,5 @@ class Solution {
     return -1;
 }
 }
+
+//It is just a slight inversion find index of minimum element
