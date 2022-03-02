@@ -1,23 +1,14 @@
 class Solution {
-    public int arraySign(int[] arr) {
-      boolean flag = false;
-        int count = 0;
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]==0){
-                flag = true;
-                break;
-            }
-            else if(arr[i]<0){
-                count++;
+    public int arraySign(int[] nums) {
+        int sign = 1; 
+        for (int n : nums) {
+            if (n == 0) {
+                return 0; 
+            } 
+			if (n < 0) {
+                sign = -sign; 
             }
         }
-        
-        if(flag==true)
-            return 0;
-        
-        if(count%2==0)
-            return 1;
-        else
-            return -1;
+        return sign; 
     }
 }
