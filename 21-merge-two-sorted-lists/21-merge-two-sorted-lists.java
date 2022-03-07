@@ -9,12 +9,10 @@
  * }
  */
 class Solution {
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-         if (l1 == null || l2 == null)
-            return l1 != null ? l1 : l2;
+     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 
         ListNode dummy = new ListNode(-1);
-        ListNode prev = dummy;
+        ListNode prev = dummy;  //dummy node ka head
 
         ListNode c1 = l1;
         ListNode c2 = l2;
