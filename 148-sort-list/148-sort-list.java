@@ -9,23 +9,56 @@
  * }
  */
 class Solution {
-    public ListNode sortList(ListNode head) {
-        //Brute force O(nlongn) && O(n) space
-        ArrayList<Integer> al = new ArrayList<>();
-        while(head!=null){
-            al.add(head.val);
-            head = head.next;
+    public ListNode mid(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head;
+        
+        while(fast.next!=null && fast.next.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        Collections.sort(al);
-        ListNode dummy = new ListNode();
-       ListNode temp2 = dummy;
-        int i = 0;
-        while(temp2!=null && i<al.size()){
-            
-            temp2.next = new ListNode(al.get(i));
-             i++;
-            temp2 = temp2.next;
+        
+        return slow;
+    }
+    
+    public ListNode mergeTwoLL(ListNode head1,ListNode head2){
+        ListNode dummy = new ListNode(-1);
+        ListNode prev = dummy;
+        
+        ListNode t1 = head1;
+        ListNode t2 = head2;
+        
+        while(t1!=null && t2!=null){
+            if(t1.val<=t2.val){
+                prev.next = t1;
+                t1 = t1.next;
+            }
+            else{
+                 prev.next = t2;
+                t2 = t2.next;
+            }
+            prev = prev.next;
+        }
+        if(t1!=null){
+            prev.next = t1;
+        }
+        else if(t2!=null){
+            prev.next = t2;
         }
         return dummy.next;
+    }
+    public ListNode sortList(ListNode head) {
+        if(head==null || head.next==null){
+            return head;
+        }
+        
+        ListNode mid = mid(head);
+        ListNode sh = mid.next;
+        mid.next = null;
+        
+        ListNode left = sortList(head);
+        ListNode right = sortList(sh);
+        
+        return mergeTwoLL(left,right);
     }
 }
