@@ -15,6 +15,9 @@ class Node {
 
 class Solution {
     public Node copyRandomList(Node head) {
+        if(head==null)
+            return head;
+        /* This takes O(n) space
         Node dummy = new Node(-1);
         Node prev = dummy;
         HashMap<Node,Node> map = new HashMap<>();
@@ -42,5 +45,40 @@ class Solution {
         }
         
         return dummy.next;
+        */
+        //This takes O(1)Space
+        
+        //Insertion of copied nodes
+        Node temp = head;
+        while(temp!=null){
+            Node n = new Node(temp.val);
+            Node forw = temp.next;
+            temp.next = n;
+            n.next = forw;
+            temp = forw;
+        }
+    
+        
+        //set random pointers
+         Node curr = head;
+    while(curr!=null){
+        curr.next.random = curr.random==null ? null : curr.random.next;
+        curr = curr.next.next;
+    }
+        //segregate original and copied linked list
+       Node c1 = head;
+        Node ans = c1.next;
+       Node c2 = c1.next;
+    while(c1!=null && c2!=null){
+        Node n1 = c2.next;
+        Node n2 = n1==null?null:n1.next;
+        
+        c1.next = n1;
+        c2.next = n2;
+        
+        c1 = n1;
+        c2 = n2;
+    }
+        return ans;
     }
 }
