@@ -15,7 +15,10 @@ class Solution {
             }
             if(done==true) count++;
         }
+        
+        //Agar visited array kaise fill huya hai samaj nahi aaye toh print kara kar dekh lena visited array ko neeche wale comment se
         // System.out.println(Arrays.deepToString(visited));
+        
         return count;
     }
 }
