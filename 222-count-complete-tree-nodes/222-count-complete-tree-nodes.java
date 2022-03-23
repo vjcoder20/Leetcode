@@ -15,16 +15,16 @@
  */
 class Solution {
     int count = 0;
-    public int countNodes(TreeNode root) {
+    public void preorder(TreeNode root){
         if(root==null)
-            return 0;
+            return;
         
-        if(root.left!=null)
-            count = countNodes(root.left);
-        
-        if(root.right!=null)
-            count = countNodes(root.right);
-        
-        return count+1;
+        count++;
+        preorder(root.left);
+        preorder(root.right);
+    }
+    public int countNodes(TreeNode root) {
+        preorder(root);
+        return count;
     }
 }
