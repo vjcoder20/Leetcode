@@ -37,7 +37,7 @@ class Solution {
                 if(rem.right!=null)
                     q.add(rem.right);
             }
-            li.add(new ArrayList<>(temp));
+            li.add(temp);
         }
         return li;
     }
