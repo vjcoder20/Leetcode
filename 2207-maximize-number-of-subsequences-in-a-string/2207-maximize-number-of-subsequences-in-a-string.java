@@ -30,26 +30,22 @@ class Solution {
     }
     public long maximumSubsequenceCount(String text, String pattern) {
         long ans = 0;
+        
         StringBuilder sb = new StringBuilder(text);
+            
             sb.insert(0,pattern.charAt(0));
             long sub = count(sb.toString(),pattern);
             ans = Math.max(ans,sub);
-            sb = new StringBuilder(text);
-
-        sb.insert(text.length(),pattern.charAt(0));
-        long last = count(sb.toString(),pattern);
-        ans = Math.max(ans,last);
+            
+        
+ 
         
          sb = new StringBuilder(text);
-       
-            sb.insert(0,pattern.charAt(1));
-            sub = count(sb.toString(),pattern);
-            ans = Math.max(ans,sub);
-            sb = new StringBuilder(text);
         
-         sb.insert(text.length(),pattern.charAt(1));
-        last = count(sb.toString(),pattern);
-        ans = Math.max(ans,last);
+        
+        sb.insert(text.length(),pattern.charAt(1));
+        sub = count(sb.toString(),pattern);
+        ans = Math.max(ans,sub);
         
         
         return ans;
