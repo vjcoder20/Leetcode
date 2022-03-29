@@ -14,7 +14,6 @@
  * }
  */
 class Solution {
-    int ans = 0;
     static class Pair{
         int inc;
         int exc;
@@ -40,12 +39,11 @@ class Solution {
         np.inc = lp.exc+rp.exc+root.val;
         np.exc = Math.max(lp.inc,lp.exc) + Math.max(rp.exc,rp.inc);
         
-        ans = Math.max(ans,Math.max(np.inc,np.exc));
         
        return np;
     }
     public int rob(TreeNode root) {
-        solve(root);
-        return ans;
+      Pair ans = solve(root);
+    return Math.max(ans.inc,ans.exc);
     }
 }
