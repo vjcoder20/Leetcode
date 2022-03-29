@@ -13,6 +13,7 @@ class Solution {
         }
         return ans;
         */
+        /* Method 2 O(nlogn) tc and O(1) sc
         int ans = 0;
         Arrays.sort(arr);
         for(int i=0;i<arr.length-1;i++){
@@ -22,5 +23,18 @@ class Solution {
             }
         }
         return ans;
+        */
+        //Method 3 O(n) tc and O(1) sc
+        int duplicate = -1;
+        for(int i=0;i<arr.length;i++){
+            // System.out.println(Arrays.toString(arr));
+            int num = Math.abs(arr[i]);
+            if(arr[num]<0){
+                duplicate = num;
+                break;
+            }
+            arr[num]*=-1;
+        }
+        return duplicate;
     }
 }
