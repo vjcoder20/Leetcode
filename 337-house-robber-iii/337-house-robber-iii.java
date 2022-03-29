@@ -18,11 +18,6 @@ class Solution {
         int inc;
         int exc;
         
-        Pair(int inc,int exc){
-            this.inc = inc;
-            this.exc = exc;
-        }
-        
         Pair(){
             
         }
