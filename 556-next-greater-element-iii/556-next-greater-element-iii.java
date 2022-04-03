@@ -1,4 +1,5 @@
 class Solution {
+    //is question ka Logic go to question no. 31
     public int nextGreaterElement(int n) {
         String str = n+"";
         char[] arr = str.toCharArray();
