@@ -9,57 +9,37 @@
  * }
  */
 class Solution {
-    public ListNode kend(ListNode head, int k){
-    ListNode slow = head;
-    ListNode fast = head;
-    
-    //to maintain a gap of k between slow and fast
-    while(fast!=null && k-->0){
-        fast = fast.next;
-    }
-    
-    if(fast==null && k>0){
-        //k>length of linked list
-        return null;
-    }
-    
-    if(fast==null){
-        //remove the first node from starting
-        return head;
-    }
-    
-    while(fast.next!=null){
-        slow = slow.next;
-        fast = fast.next;
-    }
-        
-        return slow.next;
-    }
-    public ListNode kbegin(ListNode head, int k){
-        
-        while(head!=null && k-->1){
-            head = head.next;
-        }
-        
-        return head;
-    }
-    
     public ListNode swapNodes(ListNode head, int k) {
-    
-        ListNode kbegin = kbegin(head,k);
-        ListNode kend = kend(head,k);
+        //Naive aproach
+        ListNode start = head;
+        ListNode end = head;
+        ListNode last = head;
+        int length = 0;
+        int l = k;
         
-        System.out.println(kbegin.val);
-        System.out.println(kend.val);
-        
-        if(kbegin!=null && kend!=null){
-        int temp = kbegin.val;
-        kbegin.val = kend.val;
-        kend.val = temp;
+        //1st Loop: Find starting node i.e. k-1 from starting
+        while(l-->1){
+            start = start.next;
         }
         
-        return head;
-      
+        //2nd Loop: To find the length of linked list
+        while(last!=null){
+            last = last.next;
+            length++;
+        }
         
+        //3rd loop: To find the end node i.e. (length-k+1)
+        int s = length-k;
+        while(s-->0){
+            end = end.next;
+        }
+        
+        //Swap the values
+
+        int temp = start.val;
+        start.val = end.val;
+        end.val = temp;
+        
+        return head;
     }
 }
