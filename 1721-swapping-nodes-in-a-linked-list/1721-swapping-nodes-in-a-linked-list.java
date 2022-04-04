@@ -10,7 +10,8 @@
  */
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
-        //Naive aproach
+    /*
+    Naive aproach 3 Loops
         ListNode start = head;
         ListNode end = head;
         ListNode last = head;
@@ -36,6 +37,32 @@ class Solution {
         
         //Swap the values
 
+        int temp = start.val;
+        start.val = end.val;
+        end.val = temp;
+        
+        return head;
+        */
+        //One pass Solution
+        
+        ListNode start = head;
+        ListNode end = head;
+        ListNode last = head;
+        
+        
+        //Why this is working try to dry run and you will know
+        while(last.next!=null){
+            if(k<=1){
+                end = end.next;
+            }
+            else{
+                k--;
+                start = start.next;
+            }
+            last = last.next;
+        }
+        
+        //swap the values
         int temp = start.val;
         start.val = end.val;
         end.val = temp;
