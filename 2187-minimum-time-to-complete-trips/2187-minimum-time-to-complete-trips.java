@@ -25,10 +25,10 @@ class Solution {
      long l = 1;
     long h = 100000000000000L;
         
-        while(l<h){
+        while(l<=h){
           long mid = l+(h-l)/2;
             if(canComplete(time,totalTrips,mid)==true)
-                h = mid;
+                h = mid-1;
             else
             l = mid+1;
         }
