@@ -2,12 +2,13 @@ class Solution {
 
     public boolean canComplete(int[] time,int total,long i){
         
-        int idharTotal = 0;
+        long idharTotal = 0;
         for(int j=0;j<time.length;j++){
             idharTotal+=i/time[j];
         }
         return idharTotal>=total;
     }
+
     public long minimumTime(int[] time, int totalTrips) {
         /*
         Naive Approach
@@ -21,19 +22,16 @@ class Solution {
        */
         
         //Optimal Approach
-       long lo = 0, hi = 100_000_000_000_000L;
-        while (lo < hi) {
-            long need = lo + (hi - lo) / 2;
-            long trips = 0;
-            for (int t : time) {
-                trips += need / t;
-            }
-            if (trips < totalTrips) {
-                lo = need + 1;
-            }else {
-                hi = need;
-            }
+     long l = 1;
+    long h = 100000000000000L;
+        
+        while(l<h){
+          long mid = l+(h-l)/2;
+            if(canComplete(time,totalTrips,mid)==true)
+                h = mid;
+            else
+            l = mid+1;
         }
-        return lo;
+        return l;    
     }
 }
