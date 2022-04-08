@@ -1,6 +1,6 @@
 class KthLargest {
     
-    public PriorityQueue<Integer> pq;
+    public PriorityQueue<Integer> pq;  //min heap
    public int k;
     
     public KthLargest(int k, int[] arr) {
