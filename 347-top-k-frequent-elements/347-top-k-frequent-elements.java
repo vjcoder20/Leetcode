@@ -7,14 +7,16 @@ class Solution {
             map.put(arr[i],map.getOrDefault(arr[i],0)+1);
         }
         
-         PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> map.get(b).compareTo(map.get(a))); 
+         PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> map.get(a).compareTo(map.get(b))); 
         
       for(int key:map.keySet()){
           pq.add(key);
+          if(pq.size()>k)
+              pq.remove();
       }
         
         int i = 0;
-        while(i!=k){
+        while(pq.size()>0){
            res[i++] = pq.remove();
         }
         
