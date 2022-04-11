@@ -11,9 +11,11 @@ class Solution {
             
             List<Integer> al = new ArrayList<>();
             li.add(al);
-                
+             
+            
+            //Normal formula to get original index is (i*col+j)%total
             for(int j=0;j<n;j++){
-             int index = ((i * n + j) - k + total) % total;
+             int index = ((i * n + j) - k + total) % total; //after k shift
             // System.out.println(index);
             al.add(arr[index / n][index % n]);
             }
