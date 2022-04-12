@@ -38,7 +38,7 @@ class Solution {
                 int ni = rem.i+dir[k][0];
                 int nj = rem.j+dir[k][1];
                 
-                if(ni>=0 && ni<arr.length && nj>=0 && nj<arr[0].length && arr[ni][nj]==1 && ans[ni][nj]==-1){
+                if(ni>=0 && ni<arr.length && nj>=0 && nj<arr[0].length && ans[ni][nj]==-1){
                     q.add(new Pair(ni,nj,rem.dist+1));
                     ans[ni][nj] = rem.dist+1;
                 }
