@@ -17,23 +17,23 @@ class BSTIterator {
     public void inorder(TreeNode root){
         if(root==null)
             return;
-        inorder(root.right);
-         st.push(root.val);
-        inorder(root.left);
+         inorder(root.left);
+          q.add(root.val);
+         inorder(root.right);
     }
-    Stack<Integer> st = new Stack<>();
+    Queue<Integer> q;
 
     public BSTIterator(TreeNode root) {
-        st = new Stack<>();
+        q =  new ArrayDeque<>();
         inorder(root);
     }
     
     public int next() {
-       return st.pop();
+       return q.remove();
     }
     
     public boolean hasNext() {
-      if(st.size()>0)
+      if(q.size()>0)
           return true;
         else
             return false;
