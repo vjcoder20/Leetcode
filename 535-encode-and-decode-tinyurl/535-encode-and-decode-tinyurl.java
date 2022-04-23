@@ -2,7 +2,6 @@ public class Codec {
 
     // Encodes a URL to a shortened URL.
     public String encode(String longUrl) {
-        decode(longUrl);
         return longUrl;
     }
 
