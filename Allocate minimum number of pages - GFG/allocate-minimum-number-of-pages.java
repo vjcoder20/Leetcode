@@ -50,7 +50,6 @@ class Solution
     {
         long sum = 0;
         int max = 0;
-        int ans = 0;
         
         for(int i=0;i<n;i++){
             sum+=arr[i];
@@ -67,7 +66,6 @@ class Solution
             
             if(isFeasible(arr,mid,m)==true){
                 high=mid-1;
-                ans = mid;
             }
             
             else{
@@ -75,6 +73,6 @@ class Solution
             }
         }
         
-        return ans;
+        return low;
     }
 };
