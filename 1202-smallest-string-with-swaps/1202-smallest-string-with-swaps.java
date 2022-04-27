@@ -1,3 +1,13 @@
+/*
+Maan le ye example hai
+"edabc"
+[[0,2],[0,3],[1,4]]
+o/p: acbed
+
+Toh hum basically kya kar rahe hai grouping kar rahe hai jaise [0,2],[0,3] so in sabka koi ek parent baana do DSU lagakar jaise ki 0 so [0,2,3] so what will happen 0->0, 2->0,      3->0 belongs to same group and similarly [1,4] ka bhi ek parent bana do jaise ki 1 and now so 1->1, 4->1 according to parent ek minHeap priorityQueue mein bhar lo and according to parent nikalkar usko string mein add kar do aapke paas smallest string aa jayegi lexicographically 
+
+Nahi toh ek dry run kar le samaj aa jayega
+*/
 class Solution {
      int[]parent;
      int[]rank;
@@ -31,9 +41,7 @@ class Solution {
             sb.append(map.get(find(i)).remove());
         }
         return sb.toString();
-        
-        
-      
+       
     }
      public void union(int u,int v) {
         int slu = find(u);
