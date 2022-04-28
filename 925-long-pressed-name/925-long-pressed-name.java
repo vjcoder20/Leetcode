@@ -3,9 +3,6 @@ class Solution {
         int n = name.length();
         int t = typed.length();
         
-        if(t<n){
-            return false;
-        }
         
         
         int i=0;
