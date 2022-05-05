@@ -23,7 +23,7 @@ class Solution {
         
         // System.out.println(Arrays.toString(lmax));
         // System.out.println(Arrays.toString(rmin));
-        // [19,6,25,14,30,28,40,45,50]
+        // [19,6,25,14,30,28,40,45,50] -> DRY RUN
         
         int chunks = 0;
         for(int i=0;i<n-1;i++){
