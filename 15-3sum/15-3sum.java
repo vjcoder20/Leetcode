@@ -6,7 +6,7 @@ class Solution {
    int j = arr.length-1;
    
    while(i<j){
-       if(i>idx && arr[i]==arr[i-1]){  //to avoid duplicates
+       if(i!=idx && arr[i]==arr[i-1]){  //to avoid duplicates
            i++;
            continue;
        }
