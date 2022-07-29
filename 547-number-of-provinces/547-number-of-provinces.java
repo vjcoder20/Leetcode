@@ -1,9 +1,11 @@
 class Solution {
     public void dfs(int i,int[][] arr,boolean[] visited){
         
-       
+      
         
         for(int j=0;j<arr.length;j++){
+            if(i==j)
+           continue;
             if(arr[i][j]==1 && visited[j]==false){
                 visited[j] = true;
                 dfs(j,arr,visited);
