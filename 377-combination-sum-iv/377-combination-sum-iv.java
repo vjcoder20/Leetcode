@@ -1,21 +1,18 @@
 class Solution {
-    
-    public int memoization(int[] nums,int target,Integer[] dp){
-          if(target == 0)return 1;
+    public int combinationSum4(int[] arr, int target) {
         
-        if(target < 0)return 0;
+        int[] dp = new int[target+1];
         
-        if(dp[target]!=null)
-            return dp[target];
+        dp[0] = 1;
         
-        int res = 0;
-        for(int i = 0;i<nums.length;i++){
-            res += memoization(nums,target-nums[i],dp);
+        for(int i=1;i<=target;i++){
+            for(int j=0;j<arr.length;j++){
+                if(i-arr[j]>=0)
+                dp[i]+=dp[i-arr[j]];
+            }
         }
-        return dp[target]=res;
-    }
-    
-    public int combinationSum4(int[] nums, int target) {
-       return memoization(nums,target,new Integer[target+1]);
+        
+        return dp[target];
+        
     }
 }
