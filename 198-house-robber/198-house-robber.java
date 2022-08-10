@@ -18,7 +18,15 @@ class Solution {
     
     public int rob(int[] arr) {
         int[] dp = new int[arr.length];
-        Arrays.fill(dp,-1);
-        return maxSum(arr,arr.length-1,dp);
+        
+        dp[0] = arr[0];
+        
+        for(int i=1;i<arr.length;i++){
+            int pick = arr[i]+(i>1?dp[i-2]:0);
+            int notpick = dp[i-1];
+            dp[i] = Math.max(pick,notpick);
+        }
+        
+       return dp[arr.length-1];
     }
 }
