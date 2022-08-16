@@ -3,6 +3,20 @@ class Solution {
         Arrays.sort(arr);
         int n = arr.length;
         
-        return ((arr[n-1]-1)*(arr[n-2]-1));
+       int fmax = 0;
+        int smax = 0;
+        
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>fmax){
+                smax = fmax;
+                fmax = arr[i];
+            }
+            
+            else if(arr[i]>smax){
+                smax = arr[i];
+            }
+        }
+        
+        return ((smax-1)*(fmax-1));
     }
 }
