@@ -18,14 +18,14 @@ class Solution {
         }
 
       
-        {
+        
             tank -= target - prev;
             while (!pq.isEmpty() && tank < 0) {
                 tank += pq.poll();
                 ans++;
             }
             if (tank < 0) return -1;
-        }
+        
 
         return ans;
     }
