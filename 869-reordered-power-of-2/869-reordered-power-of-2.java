@@ -1,3 +1,4 @@
+// TC: O(32*length(2^32) + O(no of digits in N)
 class Solution {
     public boolean reorderedPowerOf2(int N) {
         int[] inputDigitFreq = freqCount(N);
