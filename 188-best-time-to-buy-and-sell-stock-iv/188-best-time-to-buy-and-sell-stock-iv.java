@@ -1,27 +1,31 @@
 class Solution {
-   public int maxProfit(int k, int[] prices) {
-	int n = prices.length;
-	if (n <= 1)
-		return 0;
-	
-	//if k >= n/2, then you can make maximum number of transactions.
-	if (k >=  n/2) {
-		int maxPro = 0;
-		for (int i = 1; i < n; i++) {
-			if (prices[i] > prices[i-1])
-				maxPro += prices[i] - prices[i-1];
-		}
-		return maxPro;
-	}
-	
-    int[][] dp = new int[k+1][n];
-    for (int i = 1; i <= k; i++) {
-    	int localMax = dp[i-1][0] - prices[0];
-    	for (int j = 1; j < n; j++) {
-    		dp[i][j] = Math.max(dp[i][j-1],  prices[j] + localMax);
-    		localMax = Math.max(localMax, dp[i-1][j] - prices[j]);
-    	}
+   public int solve(int[] arr,int idx,int buy,int cap,Integer[][][] dp){
+        
+        if(idx==arr.length || cap==0)
+            return 0;
+        
+        if(dp[idx][buy][cap]!=null)
+            return dp[idx][buy][cap];
+        
+        int profit = 0;
+        
+        if(buy==1){
+            int profit1 = -arr[idx]+solve(arr,idx+1,0,cap,dp); //take
+            int profit2 = 0 + solve(arr,idx+1,1,cap,dp);  //not take
+            profit = Math.max(profit1,profit2);
+        }
+        else{  //means sell
+            int profit1 = arr[idx]+solve(arr,idx+1,1,cap-1,dp); //take
+            int profit2 = 0 + solve(arr,idx+1,0,cap,dp);  //not take
+            profit = Math.max(profit1,profit2);
+        }
+            
+        
+        return dp[idx][buy][cap]=profit;
     }
-    return dp[k][n-1];
-}
+    
+    public int maxProfit(int k,int[] arr) {
+       Integer[][][] dp = new Integer[arr.length][2][k+1];
+        return solve(arr,0,1,k,dp);  //here one signify buy and 0 is to not buy
+    }
 }
