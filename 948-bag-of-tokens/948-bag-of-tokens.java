@@ -20,8 +20,7 @@ class Solution {
                 high--;
             }
             else{
-                low++;
-                high--;
+                break;
             }
         }
         
