@@ -25,12 +25,13 @@ class Solution {
 
 
         List<List<String>> list = new ArrayList<>();
-        for(Map.Entry<String,List<String>> entry : map.entrySet()){
-
-            // check for duplication
-            if(entry.getValue().size()>1)
-                list.add(entry.getValue());
+        
+        for(String s:map.keySet()){
+            List<String> li = map.get(s);
+            if(li.size()>1)
+                list.add(li);
         }
+        
         return list;
     }
 }
