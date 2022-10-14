@@ -9,31 +9,23 @@
  * }
  */
 class Solution {
-    
-      public ListNode middleNode(ListNode head) {
-          
-          
+    public ListNode deleteMiddle(ListNode head) {
+        
+        if(head==null || head.next==null)
+            return null;
         
         ListNode slow = head;
         ListNode fast = head;
-         ListNode temp = null;
+        ListNode del = null;
         
         while(fast!=null && fast.next!=null){
-            temp = slow;
+            del = slow;
             slow = slow.next;
             fast = fast.next.next;
         }
         
-        return temp;
-    }
-    
-    public ListNode deleteMiddle(ListNode head) {
+        del.next = slow.next;
         
-        if(head==null || head.next==null)
-              return null;
-        
-         ListNode res = middleNode(head);
-         res.next = res.next.next;
-          return head;
+        return head;
     }
 }
