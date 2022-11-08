@@ -6,7 +6,7 @@ class Solution {
         for(int i=0;i<s.length();i++){
             char ch = s.charAt(i);
             
-        if(st.size()>0 && (st.peek()==(char)(ch+32) || st.peek()==(char)(ch-32)))
+        if(st.size()>0 && Math.abs(st.peek()-ch)==32)
                 st.pop();
             else
             st.push(ch);
