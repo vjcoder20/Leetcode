@@ -1,7 +1,28 @@
 class Solution {
     public String reverseWords(String s) {
-         String[] words = s.trim().split(" +");
-        Collections.reverse(Arrays.asList(words));
-        return String.join(" ", words);
+        
+        String ans = "";
+        
+        int i = s.length()-1;
+        
+        while(i>=0){
+            
+            while(i>=0 && s.charAt(i)==' ') i--;
+            
+            int j = i;
+            
+            if(i<0) break;
+            
+            while(i>=0 && s.charAt(i)!=' ') i--;
+            
+            if(ans.length()==0)
+            ans+=s.substring(i+1,j+1);
+            
+            else
+             ans+=" "+s.substring(i+1,j+1);
+            
+        }
+        
+        return ans;
     }
 }
