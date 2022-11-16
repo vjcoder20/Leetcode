@@ -14,22 +14,40 @@
  * }
  */
 class Solution {
-    int count = 0;
     public int countNodes(TreeNode root) {
-        if(root==null)
-            return count;
         
-        solve(root);
-       return count;
+        if(root==null)  
+            return 0;
         
+        int lh = countleft(root);
+        int rh = countright(root);
+        
+        if(lh==rh)
+            return ((2<<lh)-1);
+        
+        else
+        return 1+countNodes(root.left)+countNodes(root.right);
     }
     
-    public void solve(TreeNode root){
-        if(root==null)
-            return;
+    public int countleft(TreeNode node){
+        int height = 0;
         
-        count++;
-        solve(root.left);
-        solve(root.right);
+        while(node.left!=null){
+            height++;
+            node = node.left;
+        }
+        
+        return height;
+    }
+    
+    public int countright(TreeNode node){
+        int height = 0;
+        
+        while(node.right!=null){
+            height++;
+            node = node.right;
+        }
+        
+        return height;
     }
 }
