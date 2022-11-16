@@ -19,8 +19,8 @@ class Solution {
         if(root==null)  
             return 0;
         
-        int lh = countleft(root);
-        int rh = countright(root);
+        int lh = countleft(root.left);
+        int rh = countright(root.right);
         
         if(lh==rh)
             return ((2<<lh)-1);
@@ -32,7 +32,7 @@ class Solution {
     public int countleft(TreeNode node){
         int height = 0;
         
-        while(node.left!=null){
+        while(node!=null){
             height++;
             node = node.left;
         }
@@ -43,7 +43,7 @@ class Solution {
     public int countright(TreeNode node){
         int height = 0;
         
-        while(node.right!=null){
+        while(node!=null){
             height++;
             node = node.right;
         }
