@@ -19,8 +19,8 @@ class Solution {
 
         //9 elements window check
         
-         int ind = (i/3)*3;
-         int jind = (j/3)*3;
+         int ind = i/3*3;
+         int jind = j/3*3;
       
       for(int row=0;row<3;row++){
           for(int col=0;col<3;col++){
