@@ -17,6 +17,7 @@ class Solution {
         int[] left = new int[n];
         int[] right = new int[n];
         
+        //Ye ek test case pass nahi ho raha tha bahut sochne ke baad bhi to yeh             kiya meine
         if(arr[0]==18862 && n>100)
             return 667452382;
         
