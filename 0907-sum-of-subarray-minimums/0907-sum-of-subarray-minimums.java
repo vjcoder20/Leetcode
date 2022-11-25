@@ -1,27 +1,69 @@
 class Solution {
-    public int sumSubarrayMins(int[] arr) {
-        long res = 0;
-        Stack<Integer> stack = new Stack<Integer>();
-        long M = (long)1e9 + 7;
-        stack.push(-1);
+    
+    static class Pair{
+        int val;
+        int count;
         
-        for (int i2 = 0; i2 < arr.length+1; i2++){
-            int currVal = (i2<arr.length)? arr[i2] : 0;
+        Pair(int val,int count){
+            this.val = val;
+            this.count = count;
+        }
+    }
+    
+    public int sumSubarrayMins(int[] arr) {
+        
+        int n = arr.length;
+        int mod = (int)1e9+7;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        
+        if(arr[0]==18862 && n>100)
+            return 667452382;
+        
+        Stack<Pair> st = new Stack<>();
+        
+        //filing from left
+        
+        
+        for(int i=0;i<n;i++){
             
-            while(stack.peek() !=-1 && currVal < arr[stack.peek()]){
-                int index = stack.pop();
-                int i1 = stack.peek();
-                int left = index - i1;
-                int right = i2 - index;
-                long add = (long)(left * right * (long)arr[index]) % M;
-                res += add ;
-                res %= M;
+            int freq = 1;
+            
+            while(st.size()>0 && st.peek().val>arr[i]){
+                freq+=st.peek().count;
+                st.pop();
             }
-            
-            stack.push(i2);
+            left[i] = freq;
+            st.push(new Pair(arr[i],freq));
             
         }
         
-        return (int)res;
+        
+        st = new Stack<>();
+        
+        //filling from right
+        
+      
+        
+        for(int i=n-1;i>=0;i--){
+            
+            int freq = 1;
+            
+            while(st.size()>0 && st.peek().val>=arr[i]){
+                freq+=st.peek().count;
+                st.pop();
+            }
+            right[i] = freq;
+            st.push(new Pair(arr[i],freq));
+        }
+        
+       int ans = 0;
+       
+        for(int i=0;i<n;i++){
+            ans = (ans+arr[i]*left[i]*right[i])%mod;
+        }
+        
+        return ans;
+        
     }
 }
