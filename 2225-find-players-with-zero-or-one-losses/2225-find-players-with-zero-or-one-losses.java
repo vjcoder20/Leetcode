@@ -1,41 +1,41 @@
 class Solution {
     public List<List<Integer>> findWinners(int[][] arr) {
-        
         List<List<Integer>> li = new ArrayList<>();
+        HashMap<Integer,Integer> map = new HashMap<>();
+        HashMap<Integer,Integer> map2 = new HashMap<>();
         
-        for(int i=0;i<2;i++)
-            li.add(new ArrayList<>());
-        
-        
-        
-     
-        TreeMap<Integer,Integer> lose = new TreeMap<>();
-        TreeMap<Integer,Integer> win = new TreeMap<>();
+      
         
         
-       for(int i=0;i<arr.length;i++){
-           int f = arr[i][0];
-           int s = arr[i][1];
-           
-           win.put(f,win.getOrDefault(f,0)+1);
-           lose.put(s,lose.getOrDefault(s,0)+1);
-       }
+        ArrayList<Integer> wi = new ArrayList<>();
+         ArrayList<Integer> lo = new ArrayList<>();
         
-        for(int key:win.keySet()){
-            if(!lose.containsKey(key))
-                li.get(0).add(key);
+        
+        for(int i=0;i<arr.length;i++){
+            map.put(arr[i][0],map.getOrDefault(arr[i][0],0)+1);
+            map2.put(arr[i][1],map2.getOrDefault(arr[i][1],0)+1);
         }
         
-        for(int key:lose.keySet()){
-            int freq = lose.get(key);
-            if(freq==1)
-             li.get(1).add(key);   
+        
+        for(int key:map.keySet()){
+            if(map2.containsKey(key)==false)
+              wi.add(key);
         }
+        
+        Collections.sort(wi);
+        li.add(wi);
+        
+        
+        for(int key:map2.keySet()){
+            if(map2.get(key)==1)
+               lo.add(key);
+        }
+        
+         Collections.sort(lo);
+        li.add(lo);
         
         
         
         return li;
-        
-        
     }
 }
