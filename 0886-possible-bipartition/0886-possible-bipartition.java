@@ -31,7 +31,7 @@ class Solution {
          int v1 = arr[i][0];
          int v2 = arr[i][1]; 
          graph[v1].add(new Edge(v1, v2));
-         graph[v2].add(new Edge(v2,v1));
+         graph[v2].add(new Edge(v2, v1));
         }
         
          int[] visited = new int[n+1];
