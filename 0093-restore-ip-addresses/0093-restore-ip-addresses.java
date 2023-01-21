@@ -1,22 +1,51 @@
 class Solution {
     
-     public List<String> restoreIpAddresses(String s) {
-        List<String> result = new ArrayList<>();
-        doRestore(result, "", s, 0);
-        return result;
+    List<String> ans = new ArrayList<>();
+    
+    
+    public List<String> restoreIpAddresses(String s) {
+        
+        
+        String sb = "";
+        
+        solve(s,0,sb,0);
+        
+        
+        return ans;
+        
+        
     }
     
-    private void doRestore(List<String> result, String path, String s, int k) {
-        if (s.isEmpty() || k == 4) {
-            if (s.isEmpty() && k == 4)
-                result.add(path.substring(1));
-            return;
+    
+    public void solve(String s,int i, String sb,int k){
+        
+        if(i==s.length() || k==4){
+            
+        if(i==s.length() && k==4){
+            ans.add(sb.substring(0,sb.length()-1));
         }
-        for (int i = 1; i <= (s.charAt(0) == '0' ? 1 : 3) && i <= s.length(); i++) { // Avoid leading 0
-            String part = s.substring(0, i);
-            if (Integer.valueOf(part) <= 255)
-                doRestore(result, path + "." + part, s.substring(i), k + 1);
-        }
+        return; 
+    }
+        
+        solve(s,i+1,sb+s.charAt(i)+".",k+1);
+        
+        if(i+2<=s.length() && isValid(s.substring(i,i+2)))
+            solve(s,i+2,sb+s.substring(i,i+2)+".",k+1);
+        
+        if(i+3<=s.length() && isValid(s.substring(i,i+3)))
+             solve(s,i+3,sb+s.substring(i,i+3)+".",k+1);
+        
+        
+    }
+    
+    public boolean isValid(String s){
+        
+        if(s.charAt(0)=='0')
+            return false;
+        
+        int val = Integer.parseInt(s);
+        return val<=255;
+        
     }
     
 }
