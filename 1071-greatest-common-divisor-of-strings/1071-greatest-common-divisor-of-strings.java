@@ -1,20 +1,51 @@
 class Solution {
-    public int gcd(int x, int y) {
-        if (y == 0) {
-            return x;
-        } else {
-            return gcd(y, x % y);
-        }    
-    }
-    
     public String gcdOfStrings(String str1, String str2) {
-        // Check if they have non-zero GCD string.
-        if (!(str1 + str2).equals(str2 + str1)) {
-            return "";
+        
+        String loop = "";
+        String target = "";
+        
+        if(str1.length()<=str2.length()){
+            loop+=str1;
+            target+=str2;
+        }
+            
+            else{
+            loop+=str2;
+            target+=str1;
+            }
+        
+     
+        for(int j=loop.length();j>=1;j--){
+            
+            if(loop.length()%j==0 && target.length()%j==0){
+                
+                String temp = loop.substring(0,j);
+                
+                int n = loop.length()/j;
+                int m = target.length()/j;
+                
+                String tar1 = "";
+                String tar2 = "";
+                
+                while(n-->0){
+                    tar1+=temp;
+                }
+                
+                while(m-->0){
+                    tar2+=temp;
+                }
+                
+                
+                if(tar1.equals(loop) && tar2.equals(target))
+                    return temp;
+                
+            }
+            
         }
         
-        // Get the GCD of the two lengths.
-        int gcdLength = gcd(str1.length(), str2.length());
-        return str1.substring(0, gcdLength);
+        
+        
+        return "";
+            
     }
 }
