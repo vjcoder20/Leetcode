@@ -1,62 +1,35 @@
 class Solution {
-    
-    public boolean isFeasible(int[] arr,int val,int d){
-        
-        int temp = 1;
-        int sum = 0;
-        
-        for(int i=0;i<arr.length;i++){
-            
-            if(arr[i]>val)
-                return false;
-            
-             sum+=arr[i];
-            if(sum>val){
-                temp++;
-                sum = arr[i];
+   
+    Boolean feasible(int[] weights, int c, int days) {
+        int daysNeeded = 1, currentLoad = 0;
+        for (int weight : weights) {
+            currentLoad += weight;
+            if (currentLoad > c) {
+                daysNeeded++;
+                currentLoad = weight;
             }
-            
         }
-        
-        
-        return temp<=d;
-        
+
+        return daysNeeded <= days;
     }
-    
-    public int shipWithinDays(int[] arr, int d) {
-        //binary search on answer
-        
-        int low = 1;
-        int high = sum(arr);
-       
-        
-        while(low<=high){
-            
-            int mid = low+(high-low)/2;
-            
-            
-            if(isFeasible(arr,mid,d)==true)
-                high = mid-1;
-            
-            else
-                low = mid+1;
-            
+
+    public int shipWithinDays(int[] weights, int days) {
+        int totalLoad = 0, maxLoad = 0;
+        for (int weight : weights) {
+            totalLoad += weight;
+            maxLoad = Math.max(maxLoad, weight);
         }
-        
-        
-        return low;
-        
-        
-        
+
+        int l = maxLoad, r = totalLoad;
+
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (feasible(weights, mid, days)) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return l;
     }
-    
-    public int sum(int[] arr){
-        long ans = 0;
-        
-        for(int elem:arr)
-            ans+=elem;
-        
-        return (int)ans;
-    }
-    
 }
