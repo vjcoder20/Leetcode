@@ -2,7 +2,7 @@ class Solution {
     public List<List<Integer>> generate(int row) {
         
         List<List<Integer>> li = new ArrayList<>();
-        List<Integer> temp = new ArrayList<>();
+      
         
         for(int i=0;i<row;i++){
             
@@ -14,13 +14,13 @@ class Solution {
                     al.add(1);
                 
                 else{
-                    al.add(temp.get(j-1)+temp.get(j));
+                    al.add(li.get(i-1).get(j-1)+li.get(i-1).get(j));
                 }
                 
                 
                 
             }
-            temp = al;
+    
             li.add(new ArrayList<>(al));
             
         }
