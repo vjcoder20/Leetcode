@@ -17,23 +17,23 @@ class Solution {
     int sum = 0;
     public int sumNumbers(TreeNode root) {
         
-        sumdone(root,"");
+        sumdone(root,0);
         
         return sum;
     }
     
-    public void sumdone(TreeNode root,String ans){
+    public void sumdone(TreeNode root,int ans){
         if(root.left==null && root.right==null){
-            ans+=root.val;
-            sum+=Integer.parseInt(ans);
+            ans = ans*10+root.val;
+            sum+=ans;
             return;
         }
         
         if(root.left!=null)
-        sumdone(root.left,ans+root.val);
+        sumdone(root.left,ans*10+root.val);
         
         if(root.right!=null)
-        sumdone(root.right,ans+root.val);
+        sumdone(root.right,ans*10+root.val);
             
     }
 }
