@@ -11,6 +11,10 @@ class Solution {
                    count++;
                }
             }
+            
+            if(count==n)
+                return true;
+            
         }
         
         return count == n;
