@@ -32,56 +32,40 @@ class GFG {
 // } Driver Code Ends
 
 
+
+
 class Solution {
-    
-    static class Pair {
-    int node;
-    int parentnode;
-    public Pair(int node, int parentnode) {
-        this.node = node;
-        this.parentnode = parentnode; 
-    }
-}
-    
-    
     // Function to detect cycle in an undirected graph.
-    public boolean isCycle(int n, ArrayList<ArrayList<Integer>> li) {
-        
-        boolean[] visited = new boolean[n];
-        
-        for(int i=0;i<n;i++){
-            if(visited[i]==false){
-                if(bfs(i,li,visited)) return true;
-            }
-        }
-        
-        return false;
-    }
-        
-    public boolean bfs(int src,ArrayList<ArrayList<Integer>> li,boolean[] visited){
-        
-        Queue<Pair> q = new ArrayDeque<>();
-        q.add(new Pair(src,-1));
-        visited[src] = true;
-        
-        while(q.size()!=0){
+    public boolean cycle(boolean[] visited,ArrayList<ArrayList<Integer>> adj,int src,int parent){
+               
+            visited[src] = true;
             
-            Pair rem = q.remove();
-            
-            for(int elem:li.get(rem.node)){
+            for(int elem:adj.get(src)){
                 if(visited[elem]==false){
-                    visited[elem] = true;
-                    q.add(new Pair(elem,rem.node));
+                    if(cycle(visited,adj,elem,src))
+                    return true;
                 }
                 
-                else if(rem.parentnode!=elem)
+                else if(elem!=parent)
                 return true;
+                
             }
             
+            return false;
+               
+           }
+    
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        boolean[] visited = new boolean[V];
+        
+        for(int i=0;i<V;i++){
+            if(visited[i]==false){
+                boolean c = cycle(visited,adj,i,-1);
+                if(c==true)
+                return true;
+            }
         }
-        
-        return false;
-        
+         
+         return false;
     }
-        
 }
