@@ -7,7 +7,7 @@ class Solution {
         
         for(int i=0;i<n;i++){
             if(visited[i]==-1){
-                boolean c = bfs(graph,i,visited);
+                boolean c = dfs(graph,i,visited,0);
                 if(c==false)
                     return false;
             }
@@ -19,29 +19,24 @@ class Solution {
            
     }
     
-    public boolean bfs(int[][] graph,int src,int[] visited){
-        Queue<Integer> q = new ArrayDeque<>();
-        q.add(src);
-        visited[src] = 0;
+    public boolean dfs(int[][] graph,int src,int[] visited,int color){
         
-        while(q.size()>0){
+        visited[src] = color;
+        
+        for(int elem:graph[src]){
             
-            int rem = q.remove();
-            
-            for(int elem:graph[rem]){
-                if(visited[elem]==-1){
-                     q.add(elem);
-                    visited[elem] = visited[rem]^1;
-                }
-                
-                else if(visited[elem]==visited[rem])
+            if(visited[elem]==-1){
+                boolean c = dfs(graph,elem,visited,1-color);
+                if(c==false)
                     return false;
             }
             
+            else if(visited[elem]==color)
+                return false;
         }
         
-
         return true;
+        
     }
     
 }
