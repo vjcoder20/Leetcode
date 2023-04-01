@@ -34,42 +34,40 @@ class DriverClass {
 class Solution {
     // Function to detect cycle in a directed graph.
     public boolean isCyclic(int n, ArrayList<ArrayList<Integer>> li) {
-        
-        boolean[] visited = new boolean[n];
-        boolean[] pathvisited = new boolean[n];
+       
+        int[] indegree = new int[n];
         
         for(int i=0;i<n;i++){
-            if(visited[i]==false){
-                if(dfs(li,i,visited,pathvisited))
-                return true;
+            for(int elem:li.get(i)){
+                indegree[elem]++;
             }
         }
         
-        return false;
+        Queue<Integer> q = new ArrayDeque<>();
         
-    }
-    
-    public boolean dfs(ArrayList<ArrayList<Integer>> li,int src,boolean[] visited,boolean[] pathvisited){
-        
-        visited[src] = true;
-        pathvisited[src] = true;
-        
-        for(int elem:li.get(src)){
-            if(visited[elem]==false){
-                boolean check = dfs(li,elem,visited,pathvisited);
-                if(check==true)
-                return true;
-            }
-            
-            else if(visited[elem]==true && pathvisited[elem]==true)
-            return true;
-            
-            
+        for(int i=0;i<n;i++){
+            if(indegree[i]==0)
+            q.add(i);
         }
         
+        int count = 0;
         
         
-        pathvisited[src] = false;
+        while(q.size()>0){
+            int rem = q.remove();
+            count++;
+            
+            for(int elem:li.get(rem)){
+                indegree[elem]--;
+                if(indegree[elem]==0)
+                q.add(elem);
+            }
+        }
+        
+        if(count==n) 
         return false;
+        
+        return true;
+       
     }
 }
