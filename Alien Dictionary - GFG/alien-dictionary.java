@@ -143,7 +143,7 @@ class Solution
         StringBuilder sb = new StringBuilder();
         
         for(i=0;i<n;i++){
-           sb.append((char)(97+arr[i]));
+           sb.append((char)('a'+arr[i]));
         }
         
         
