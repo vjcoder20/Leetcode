@@ -13,7 +13,7 @@ class Solution {
         
         
         for(int i=0;i<arr.length;i++){
-            li.get(arr[i][0]).add(arr[i][1]);
+            li.get(arr[i][1]).add(arr[i][0]);
         }
         
         for(int i=0;i<n;i++){
