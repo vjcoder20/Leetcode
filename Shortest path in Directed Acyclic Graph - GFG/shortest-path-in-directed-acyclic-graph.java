@@ -58,7 +58,7 @@ class Solution {
 
 	public int[] shortestPath(int n,int m, int[][] edges) {
 		int[] arr = new int[n];
-		Arrays.fill(arr,(int)(1e9));
+		Arrays.fill(arr,101);
 		
 		arr[0] = 0;
 		
@@ -95,7 +95,7 @@ class Solution {
 	}
 	
 	for(int i=0;i<n;i++){
-	    if(arr[i]==(int)(1e9))
+	    if(arr[i]==101)
 	    arr[i] = -1;
 	}
 	
