@@ -59,7 +59,7 @@ class Solution
                     StringBuilder sb = new StringBuilder(str);
                     sb.setCharAt(i,(char)('a'+j));
                     String st = sb.toString();
-                    if(!st.equals(str) && set.contains(st)){
+                    if(set.contains(st)){
                         if(st.equals(endWord))
                             return lvl+1;
                         q.add(new Pair(st,lvl+1));
