@@ -14,11 +14,10 @@ class Solution {
         }
         
         
-        while(j<s.length()){
+        while(i<s.length()){
             
-            char ch = '0';
-            if(i<s.length())
-            ch = s.charAt(i);
+            
+            char ch = s.charAt(i);
             
             char vh = s.charAt(j);
             
@@ -37,7 +36,7 @@ class Solution {
             
     }
     
-        
+    max = Math.max(max,vow); 
     return max;
 }
 }
