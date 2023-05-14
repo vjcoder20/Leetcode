@@ -15,6 +15,6 @@ class Solution {
     }
     
     public int maxScore(int[] n) {
-        return dfs(n, new int[n.length / 2+1][2 << n.length], 1, 0);
+        return dfs(n, new int[n.length / 2+1][1 << n.length], 1, 0);
     }
 }
