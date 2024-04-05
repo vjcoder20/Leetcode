@@ -1,26 +1,27 @@
 class Solution {
     public String makeGood(String s) {
-       
-       Stack<Character> st = new Stack<>();
+        Stack<Character> st = new Stack<>();
         
-        for(int i=0;i<s.length();i++){
-            char ch = s.charAt(i);
-            
-        if(st.size()>0 && Math.abs(st.peek()-ch)==32)
+        for(char ch:s.toCharArray()){
+         
+            if(st.size()>0 && Math.abs(st.peek()-ch)==32){
                 st.pop();
+            }
+            
             else
-            st.push(ch);
+                st.push(ch);
+            
         }
         
-        StringBuilder sb = new StringBuilder();
-        
+          StringBuilder ans = new StringBuilder();
+          
         while(st.size()>0){
-            sb.append(st.peek());
-            st.pop();
+            ans.append(st.pop());
         }
         
-        sb.reverse();
-        return sb.toString();
+        
+        
+        return (ans.reverse()).toString();
         
     }
 }
