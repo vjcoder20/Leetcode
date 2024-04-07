@@ -31,7 +31,7 @@ class Solution {
         }
         
         
-         while (!brac.isEmpty() && !mul.isEmpty()) {
+         while (brac.size()>0 && mul.size()>0) {
            
             if (brac.pop() > mul.pop()) {
                 return false; 
